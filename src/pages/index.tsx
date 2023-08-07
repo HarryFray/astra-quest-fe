@@ -1,7 +1,14 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
+import { useRouter } from "next/router";
 
-export default function Home() {
+const Landing = () => {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  if (session) {
+    router.push("/home");
+    return null;
+  }
 
   return (
     <main className="flex justify-center items-center h-screen bg-gray-100">
@@ -12,23 +19,16 @@ export default function Home() {
           mysteries.
         </p>
         <div className="mt-4">
-          {session ? (
-            <button
-              onClick={() => signOut()}
-              className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
-            >
-              Sign out
-            </button>
-          ) : (
-            <button
-              onClick={() => signIn()}
-              className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
-            >
-              Sign in
-            </button>
-          )}
+          <button
+            onClick={() => signIn()}
+            className="px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700"
+          >
+            Sign in
+          </button>
         </div>
       </div>
     </main>
   );
-}
+};
+
+export default Landing;
