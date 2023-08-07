@@ -1,11 +1,11 @@
 "use client";
-import { signOut, useSession } from "next-auth/react"; // Import useSession
-import Image from "next/image"; // Import next/image
-import { useRouter } from "next/router"; // Import useRouter
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 const Home = () => {
-  const { data: session, status } = useSession(); // Use the useSession hook
-  const router = useRouter(); // Initialize useRouter
+  const { data: session, status } = useSession();
+  const router = useRouter();
 
   if (status === "loading") {
     return (
@@ -16,8 +16,8 @@ const Home = () => {
   }
 
   if (!session) {
-    router.push("/"); // Route user to '/' if not signed in
-    return null; // Returning null to prevent rendering while redirecting
+    router.push("/");
+    return null;
   }
 
   return (
