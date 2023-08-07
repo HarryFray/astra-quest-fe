@@ -29,7 +29,7 @@ const Home = () => {
             <div className="rounded-full w-20 h-20 mb-2 overflow-hidden">
               <Image
                 src={session.user.image}
-                alt={session.user.name}
+                alt={session.user.name || "User Image"}
                 width={80}
                 height={80}
                 layout="responsive"
