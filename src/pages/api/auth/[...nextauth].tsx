@@ -13,18 +13,5 @@ export default NextAuth({
       clientId: process.env.GOOGLE_ID as string,
       clientSecret: process.env.GOOGLE_SECRET as string,
     }),
-    // OAuth authentication providers
-    // AppleProvider({
-    //   clientId: process.env.APPLE_ID,
-    //   clientSecret: process.env.APPLE_SECRET,
-    // }),
-    // // Sign in with passwordless email link
-    // EmailProvider({
-    //   server: process.env.MAIL_SERVER,
-    //   from: "<no-reply@example.com>",
-    // }),
   ],
-  session: {
-    jwt: true,
-  },
 });
