@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
+import { blurredBackground } from "@/styles/contants";
 
 const createCleanLink = (name: string) => {
   return name.toLowerCase().replace(" ", "-");
@@ -58,17 +59,21 @@ const AstronautsPage = () => {
 
   return (
     <main className="flex justify-center items-center h-screen ">
-      <div className="position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5">
+      <div
+        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 ${blurredBackground}`}
+      >
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
-        <p className="text-xl text-gray-600 text-center">
+        <p className="text-xl text-black text-center">
           Select a craft or astronaut and embark on an exhilarating journey to
-          uncover fascinating details about them, guided by the spirit of Niel
-          Armstrong himself!
+          uncover fascinating details about them.
+        </p>
+        <p className="text-xl text-black text-center pt-4">
+          Guided by the spirit of Niel Armstrong himself!
         </p>
         <div className="mt-8 w-full">
           <div className="flex justify-between px-4 py-2 border-b border-gray-300 font-bold">
-            <h3 className="text-lg">Astronaut</h3>
-            <h3 className="text-lg">Craft</h3>
+            <h3 className="text-white text-lg">Astronaut</h3>
+            <h3 className="text-white text-lg">Craft</h3>
           </div>
           {allAstronaut.map((astronaut, index) => (
             <div
@@ -76,13 +81,13 @@ const AstronautsPage = () => {
               className="flex justify-between px-4 py-2 border-b border-gray-300"
             >
               <Link
-                className="hover:text-indigo-700"
+                className="text-white hover:text-indigo-700"
                 href={`/person-${createCleanLink(astronaut.name)}`}
               >
                 {astronaut.name}
               </Link>
               <Link
-                className="hover:text-indigo-700"
+                className="text-white hover:text-indigo-700"
                 href={`/craft-${createCleanLink(astronaut.craft)}`}
               >
                 {astronaut.craft}

@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { blurredBackground } from "@/styles/contants";
 
 const HomePage = () => {
   const { data: session, status } = useSession();
@@ -24,7 +25,9 @@ const HomePage = () => {
 
   return (
     <main className="flex justify-center items-center h-screen ">
-      <div className="position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg">
+      <div
+        className={`position: absolute z-10 flex flex-col items-center p-8 rounded-lg ${blurredBackground}`}
+      >
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
         <div className="flex flex-col items-center">
           {session?.user?.image && (
@@ -39,7 +42,7 @@ const HomePage = () => {
             </div>
           )}
           {session?.user?.name && (
-            <p className="text-lg text-gray-600 text-center mt-2">
+            <p className="text-lg text-gray-600 text-center mt-2 text-white">
               Welcome, {session.user.name}!
             </p>
           )}

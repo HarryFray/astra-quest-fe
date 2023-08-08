@@ -1,6 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FaSpinner } from "react-icons/fa";
+import { blurredBackground } from "@/styles/contants";
 
 const LandingPage = () => {
   const { data: session, status } = useSession();
@@ -23,9 +24,11 @@ const LandingPage = () => {
 
   return (
     <main className="flex justify-center items-center h-screen">
-      <div className="position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg">
+      <div
+        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg ${blurredBackground}`}
+      >
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
-        <p className="text-lg text-gray-600 text-center mb-8">
+        <p className="text-lg text-white text-center mb-8">
           Embark on an epic space journey to explore the cosmos and uncover its
           mysteries.
         </p>

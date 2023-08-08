@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import { blurredBackground } from "@/styles/contants";
 
 interface Route {
   path: string;
@@ -22,14 +23,16 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 p-4 w-screen flex items-center justify-between z-50">
-        <Link
-          href="/home"
-          className="text-4xl font-bold text-white hover:line-through"
+      {session && (
+        <header
+          className={`fixed top-0 left-0 right-0 p-4 w-screen flex items-center justify-between z-50 ${blurredBackground}`}
         >
-          AstroQuest
-        </Link>
-        {session && (
+          <Link
+            href="/home"
+            className="text-4xl font-bold text-white hover:line-through"
+          >
+            AstroQuest
+          </Link>
           <div className="flex">
             {routes.map((route) => (
               <Link
@@ -52,8 +55,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               Sign Out
             </div>
           </div>
-        )}
-      </header>
+        </header>
+      )}
       {children}
     </>
   );
