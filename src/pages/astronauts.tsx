@@ -3,23 +3,27 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-interface IAstronaut {
+interface AstronautData {
+  message: string;
+  number: number;
+  people: Astronaut[];
+}
+
+interface Astronaut {
   name: string;
   craft: string;
 }
 
 const AstronautsPage = () => {
-  const [allAstronaut, setAllAstronaut] = useState<IAstronaut[]>([]);
+  const [allAstronaut, setAllAstronaut] = useState<Astronaut[]>([]);
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
     async function fetchAllAstronaut() {
       try {
-        const response = await axios.get(
-          "http://api.open-notify.org/astros.json"
-        );
-        const data = response.data;
+        const response = await axios.get("/api/astronauts");
+        const data: AstronautData = response.data;
         setAllAstronaut(data.people);
       } catch (error) {
         console.error("Error fetching astronauts data:", error);
