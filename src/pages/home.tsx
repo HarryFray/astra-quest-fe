@@ -1,5 +1,4 @@
-"use client";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
@@ -37,17 +36,11 @@ const Home = () => {
             </div>
           )}
           {session?.user?.name && (
-            <p className="text-lg text-gray-600 text-center mb-2">
+            <p className="text-lg text-gray-600 text-center mt-2">
               Welcome, {session.user.name}!
             </p>
           )}
         </div>
-        <button
-          onClick={() => signOut()}
-          className="px-4 py-2 text-white bg-indigo-700 rounded hover:bg-indigo-800 mt-4"
-        >
-          Sign out
-        </button>
       </div>
     </main>
   );
