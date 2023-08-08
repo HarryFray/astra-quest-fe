@@ -58,7 +58,7 @@ const AstronautsPage = () => {
 
   return (
     <main className="flex justify-center items-center h-screen ">
-      <div className="flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5">
+      <div className="position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5">
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
         <p className="text-xl text-gray-600 text-center">
           Select a craft or astronaut and embark on an exhilarating journey to

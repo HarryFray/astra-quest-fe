@@ -18,11 +18,11 @@ const LearnFromNeil = () => {
   const { data: session, status } = useSession();
 
   const learn_from_neil_topic = String(router.query.learn_from_neil_topic);
+  const initialQuestions = buildFirstQuestion(learn_from_neil_topic);
 
-  const [message, setMessage] = useState(
-    buildFirstQuestion(learn_from_neil_topic)
-  );
+  const [message, setMessage] = useState(initialQuestions);
   const [conversation, setConversation] = useState<Entry[]>([]);
+
   const chatRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -68,41 +68,42 @@ const LearnFromNeil = () => {
 
   return (
     <main className="flex flex-col justify-center items-center h-screen ">
-      <h1 className="text-4xl font-bold text-white mb-4 color-white">
-        Learn From Neil!
-      </h1>
-      <div
-        ref={chatRef}
-        className="border border-gray-300 p-4 rounded-lg shadow-md mb-4 w-2/5 h-4/5 max-h-96 overflow-y-auto"
-      >
-        {conversation.map((entry, index) => (
-          <div
-            key={index}
-            className={`mb-2 ${
-              entry.role === "user" ? "text-green-600" : "text-blue-600"
-            }`}
-          >
-            <strong>
-              {entry.role === "user" ? session?.user?.name : "Neil"}:{" "}
-            </strong>
-            {entry.content}
-          </div>
-        ))}
-      </div>
-      <div className="flex items-center space-x-2">
-        <input
-          type="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          placeholder="Type your message..."
-          className="border border-gray-300 p-2 rounded w-60"
-        />
-        <button
-          onClick={() => handleSendMessage()}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+      <div className="position: absolute z-10 flex flex-col items-center w-2/5 h-4/5 max-h-96">
+        <div
+          ref={chatRef}
+          className="shadow-md mb-4 w-fit h-fit overflow-y-auto"
         >
-          Send
-        </button>
+          {conversation.map((entry, index) => {
+            return (
+              <div
+                key={index}
+                className={`mb-2 ${
+                  entry.role === "user" ? "text-green-600" : "text-blue-600"
+                }`}
+              >
+                <strong>
+                  {entry.role === "user" ? session?.user?.name : "Neil"}:{" "}
+                </strong>
+                {entry.content}
+              </div>
+            );
+          })}
+        </div>
+        <div className="flex items-center space-x-2">
+          <input
+            type="text"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            placeholder="Type your message..."
+            className="border border-gray-300 p-2 rounded w-60"
+          />
+          <button
+            onClick={() => handleSendMessage()}
+            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+          >
+            Send
+          </button>
+        </div>
       </div>
     </main>
   );
