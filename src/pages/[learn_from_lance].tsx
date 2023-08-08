@@ -16,7 +16,7 @@ interface Entry {
 
 const LearnFromLance = () => {
   const router = useRouter();
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
 
   const learn_from_lance = String(router.query.learn_from_lance);
 
