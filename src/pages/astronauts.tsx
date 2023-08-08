@@ -2,6 +2,11 @@ import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
+import Link from "next/link";
+
+const createCleanLink = (name: string) => {
+  return name.toLowerCase().replace(" ", "-");
+};
 
 interface AstronautData {
   message: string;
@@ -53,11 +58,12 @@ const AstronautsPage = () => {
 
   return (
     <main className="flex justify-center items-center h-screen bg-indigo-900">
-      <div className="flex flex-col items-center p-8 bg-white rounded-lg shadow-lg">
+      <div className="flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5">
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
-        <p className="text-lg text-gray-600 text-center">
-          Embark on an epic journey to explore the cosmos and uncover its
-          mysteries.
+        <p className="text-xl text-gray-600 text-center">
+          Select a craft or astronaut and embark on an exhilarating journey to
+          uncover fascinating details about them, guided by the spirit of Niel
+          Armstrong himself!
         </p>
         <div className="mt-8 w-full">
           <div className="flex justify-between px-4 py-2 border-b border-gray-300 font-bold">
@@ -69,8 +75,18 @@ const AstronautsPage = () => {
               key={index}
               className="flex justify-between px-4 py-2 border-b border-gray-300"
             >
-              <p>{astronaut.name}</p>
-              <p>{astronaut.craft}</p>
+              <Link
+                className="hover:text-indigo-700"
+                href={`/person-${createCleanLink(astronaut.name)}`}
+              >
+                {astronaut.name}
+              </Link>
+              <Link
+                className="hover:text-indigo-700"
+                href={`/craft-${createCleanLink(astronaut.craft)}`}
+              >
+                {astronaut.craft}
+              </Link>
             </div>
           ))}
         </div>
