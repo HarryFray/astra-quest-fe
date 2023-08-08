@@ -121,10 +121,6 @@ const ParticleBackground: React.FC = () => {
     await loadFull(engine);
   }, []);
 
-  const particlesLoaded = useCallback(async (container: any) => {
-    await console.log(container);
-  }, []);
-
   return (
     <div
       id="particle-background"
@@ -140,9 +136,7 @@ const ParticleBackground: React.FC = () => {
     >
       <Particles
         id="tsparticles"
-        particlesLoaded={particlesLoaded}
         init={particlesInit}
-        loaded={particlesLoaded}
         // TODO: CORRECTY RESOLVE TS ERROR HERE
         // @ts-ignore
         options={PARTICLES_CONFIG}
