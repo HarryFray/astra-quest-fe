@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useSession } from "next-auth/react";
@@ -105,7 +104,6 @@ const LearnFromNeil = () => {
           Send
         </button>
       </div>
-      <Link href="/astronauts">Go Back</Link>
     </main>
   );
 };
