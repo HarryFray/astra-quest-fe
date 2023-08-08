@@ -53,7 +53,7 @@ const LearnFromNeil = () => {
   // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
   if (status === "loading") {
     return (
-      <main className="flex justify-center items-center h-screen bg-indigo-900">
+      <main className="flex justify-center items-center h-screen ">
         <p>Loading...</p>
       </main>
     );
@@ -67,7 +67,7 @@ const LearnFromNeil = () => {
   }
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen bg-indigo-900">
+    <main className="flex flex-col justify-center items-center h-screen ">
       <h1 className="text-4xl font-bold text-white mb-4 color-white">
         Learn From Neil!
       </h1>

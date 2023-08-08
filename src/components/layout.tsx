@@ -25,7 +25,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       <header className="fixed top-0 left-0 right-0 p-4 w-screen flex items-center justify-between z-50">
         <Link
           href="/home"
-          className="text-4xl font-bold text-black hover:line-through"
+          className="text-4xl font-bold text-white hover:line-through"
         >
           AstroQuest
         </Link>
@@ -40,14 +40,14 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                   isRouteActive(route.path)
                     ? "line-through"
                     : "hover:line-through"
-                } text-black cursor-pointer ml-8`}
+                } text-white cursor-pointer ml-8`}
               >
                 {route.label}
               </Link>
             ))}
             <div
               onClick={() => signOut()}
-              className="font-ubuntu-mono text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
+              className="font-ubuntu-mono text-2xl font-bold hover:line-through text-white cursor-pointer ml-8"
             >
               Sign Out
             </div>
