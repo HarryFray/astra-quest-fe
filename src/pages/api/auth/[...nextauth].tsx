@@ -3,7 +3,6 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
 export default NextAuth({
-  secret: process.env.SECRET,
   providers: [
     GitHubProvider({
       clientId: process.env.GITHUB_ID as string,
