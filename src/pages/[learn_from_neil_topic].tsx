@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { FaSpinner } from "react-icons/fa";
-import { blurredBackground } from "@/styles/contants";
+import { blurredBackground } from "@/pages/contants";
 
 const buildFirstQuestion = (name: string) => {
   let strippedURl = Boolean(name) ? name.replaceAll("-", " ") : "space";

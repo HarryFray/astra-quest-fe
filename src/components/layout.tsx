@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { blurredBackground } from "@/styles/contants";
+import { blurredBackground } from "@/pages/contants";
 
 interface Route {
   path: string;

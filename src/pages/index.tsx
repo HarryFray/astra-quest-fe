@@ -1,7 +1,7 @@
 import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/router";
 import { FaSpinner } from "react-icons/fa";
-import { blurredBackground } from "@/styles/contants";
+import { blurredBackground } from "./contants";
 
 const LandingPage = () => {
   const { data: session, status } = useSession();

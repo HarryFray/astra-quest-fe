@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { blurredBackground } from "@/styles/contants";
+import { blurredBackground } from "@/pages/contants";
 
 const ProfilePage = () => {
   const { data: session, status } = useSession();
