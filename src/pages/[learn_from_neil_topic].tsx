@@ -80,6 +80,9 @@ const LearnFromNeil = () => {
       <div
         className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 h-3/5 bg-white bg-opacity-50 backdrop-blur-sm`}
       >
+        <h2 className="text-3xl font-bold text-indigo-700 text-center mb-4 border-b-2 pb-4">
+          Chatting with Neil Armstrong
+        </h2>
         <div ref={chatRef} className="mb-4 w-fit h-full overflow-y-auto">
           {conversation.map((entry, index) => {
             return (
