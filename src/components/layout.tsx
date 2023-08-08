@@ -8,17 +8,31 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       <header className="fixed top-0 left-0 right-0 p-4 w-screen flex items-center justify-between z-50">
         <Link
-          href="/"
+          href="/home"
           className="text-4xl font-bold text-black hover:line-through"
         >
           AstroQuest
         </Link>
         {session && (
-          <div
-            onClick={() => signOut()}
-            className="text-2xl font-bold hover:line-through text-black cursor-pointer"
-          >
-            Sign Out
+          <div className="flex">
+            <Link
+              href="/astronauts"
+              className="text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
+            >
+              Astronauts
+            </Link>
+            <Link
+              href="/profile"
+              className="text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
+            >
+              Profile
+            </Link>
+            <div
+              onClick={() => signOut()}
+              className="text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
+            >
+              Sign Out
+            </div>
           </div>
         )}
       </header>
