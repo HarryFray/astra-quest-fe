@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 
 const buildFirstQuestion = (name: string) => {
   let strippedURl = Boolean(name) ? name.replaceAll("-", " ") : "space";
-  return `Hey Neil, can you tell something about the ${strippedURl}?`;
+  return `Hey Neil, can you tell me something about the ${strippedURl}?`;
 };
 
 interface Entry {
