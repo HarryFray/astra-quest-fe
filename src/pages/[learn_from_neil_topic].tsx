@@ -39,6 +39,7 @@ const LearnFromNeil = () => {
 
   const handleSendMessage = async () => {
     setLoadingConversation(true);
+    setConversation([...conversation, { role: "user", content: message }]);
     setMessage("");
     try {
       const response = await axios.post(
@@ -46,8 +47,11 @@ const LearnFromNeil = () => {
         { message }
       );
 
-      setConversation([...conversation, { role: "user", content: message }]);
-      setConversation([...conversation, ...response.data]);
+      setConversation([
+        ...conversation,
+        { role: "user", content: message },
+        { role: "Neil", content: response.data },
+      ]);
     } catch (error) {
       console.error("Error sending message:", error);
     } finally {
@@ -93,7 +97,7 @@ const LearnFromNeil = () => {
             );
           })}
           {loadingConversation && (
-            <div className="flex items-center justify-center space-x-4 z-10 h-full w-full">
+            <div className="flex items-center justify-center space-x-4 z-10 pt-8 w-full">
               <FaSpinner className="animate-spin text-indigo-700 text-4xl text-white" />
             </div>
           )}
