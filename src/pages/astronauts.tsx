@@ -3,7 +3,6 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-import { blurredBackground } from "@/pages/contants";
 
 const createCleanLink = (name: string) => {
   return name.toLowerCase().replace(" ", "-");
@@ -60,7 +59,7 @@ const AstronautsPage = () => {
   return (
     <main className="flex justify-center items-center h-screen ">
       <div
-        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 ${blurredBackground}`}
+        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 bg-white bg-opacity-50 backdrop-blur-sm`}
       >
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
         <p className="text-xl text-black text-center">

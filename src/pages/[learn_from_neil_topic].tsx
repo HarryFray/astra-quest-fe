@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { FaSpinner } from "react-icons/fa";
-import { blurredBackground } from "@/pages/contants";
 
 const buildFirstQuestion = (name: string) => {
   let strippedURl = Boolean(name) ? name.replaceAll("-", " ") : "space";
@@ -75,7 +74,7 @@ const LearnFromNeil = () => {
   return (
     <main className="flex flex-col justify-center items-center h-screen ">
       <div
-        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 h-3/5 ${blurredBackground}`}
+        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 h-3/5 bg-white bg-opacity-50 backdrop-blur-sm`}
       >
         <div ref={chatRef} className="mb-4 w-fit h-full overflow-y-auto">
           {conversation.map((entry, index) => {

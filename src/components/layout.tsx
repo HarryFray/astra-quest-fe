@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import { blurredBackground } from "@/pages/contants";
 
 interface Route {
   path: string;
@@ -25,7 +24,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       {session && (
         <header
-          className={`fixed top-0 left-0 right-0 p-4 w-screen flex items-center justify-between z-50 ${blurredBackground}`}
+          className={`fixed top-0 left-0 right-0 p-4 w-screen flex items-center justify-between z-50 bg-white bg-opacity-50 backdrop-blur-sm`}
         >
           <Link
             href="/home"
