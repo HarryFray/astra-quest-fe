@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { useSession } from "next-auth/react";
+import { FaSpinner } from "react-icons/fa";
+import { blurredBackground } from "@/styles/contants";
 
 const buildFirstQuestion = (name: string) => {
   let strippedURl = Boolean(name) ? name.replaceAll("-", " ") : "space";
@@ -22,6 +24,7 @@ const LearnFromNeil = () => {
 
   const [message, setMessage] = useState(initialQuestions);
   const [conversation, setConversation] = useState<Entry[]>([]);
+  const [loadingConversation, setLoadingConversation] = useState(true);
 
   const chatRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +39,7 @@ const LearnFromNeil = () => {
   }, [conversation]);
 
   const handleSendMessage = async () => {
+    setLoadingConversation(true);
     setMessage("");
     try {
       const response = await axios.post(
@@ -47,6 +51,8 @@ const LearnFromNeil = () => {
       setConversation([...conversation, ...response.data]);
     } catch (error) {
       console.error("Error sending message:", error);
+    } finally {
+      setLoadingConversation(false);
     }
   };
 
@@ -68,17 +74,16 @@ const LearnFromNeil = () => {
 
   return (
     <main className="flex flex-col justify-center items-center h-screen ">
-      <div className="position: absolute z-10 flex flex-col items-center w-2/5 h-4/5 max-h-96">
-        <div
-          ref={chatRef}
-          className="shadow-md mb-4 w-fit h-fit overflow-y-auto"
-        >
+      <div
+        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 h-3/5 ${blurredBackground}`}
+      >
+        <div ref={chatRef} className="mb-4 w-fit h-full overflow-y-auto">
           {conversation.map((entry, index) => {
             return (
               <div
                 key={index}
                 className={`mb-2 ${
-                  entry.role === "user" ? "text-green-600" : "text-blue-600"
+                  entry.role === "user" ? "text-white" : "text-indigo-700"
                 }`}
               >
                 <strong>
@@ -88,18 +93,25 @@ const LearnFromNeil = () => {
               </div>
             );
           })}
+          {loadingConversation && (
+            <div className="flex items-center justify-center space-x-4 z-10 h-full w-full">
+              <FaSpinner className="animate-spin text-indigo-700 text-4xl text-white" />
+            </div>
+          )}
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="w-full">
           <input
             type="text"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Type your message..."
-            className="border border-gray-300 p-2 rounded w-60"
+            className="flex-grow bg-black text-white border border-gray-300 p-2 rounded w-8/12 mr-4"
+            disabled={loadingConversation}
           />
           <button
             onClick={() => handleSendMessage()}
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
+            className="bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-600 w-3/12"
+            disabled={loadingConversation}
           >
             Send
           </button>
