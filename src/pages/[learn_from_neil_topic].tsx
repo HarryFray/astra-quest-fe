@@ -14,13 +14,15 @@ interface Entry {
   content: string;
 }
 
-const LearnFromLance = () => {
+const LearnFromNeil = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  const learn_from_lance = String(router.query.learn_from_lance);
+  const learn_from_neil_topic = String(router.query.learn_from_neil_topic);
 
-  const [message, setMessage] = useState(buildFirstQuestion(learn_from_lance));
+  const [message, setMessage] = useState(
+    buildFirstQuestion(learn_from_neil_topic)
+  );
   const [conversation, setConversation] = useState<Entry[]>([]);
   const chatRef = useRef<HTMLDivElement>(null);
 
@@ -68,7 +70,7 @@ const LearnFromLance = () => {
   return (
     <main className="flex flex-col justify-center items-center h-screen bg-indigo-900">
       <h1 className="text-4xl font-bold text-white mb-4 color-white">
-        Learn From Lance!
+        Learn From Neil!
       </h1>
       <div
         ref={chatRef}
@@ -108,4 +110,4 @@ const LearnFromLance = () => {
   );
 };
 
-export default LearnFromLance;
+export default LearnFromNeil;

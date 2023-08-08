@@ -1,8 +1,24 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+
+interface Route {
+  path: string;
+  label: string;
+}
+
+const routes: Route[] = [
+  { path: "/astronauts", label: "Astronauts" },
+  { path: "/profile", label: "Profile" },
+];
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: session } = useSession();
+  const router = useRouter();
+
+  const isRouteActive = (pathname: string) => {
+    return router.pathname === pathname;
+  };
 
   return (
     <>
@@ -15,22 +31,23 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         </Link>
         {session && (
           <div className="flex">
-            <Link
-              href="/astronauts"
-              className="text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
-            >
-              Astronauts
-            </Link>
-            <Link
-              href="/profile"
-              className="text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
-            >
-              Profile
-            </Link>
+            {routes.map((route) => (
+              <Link
+                key={route.path}
+                href={route.path}
+                passHref
+                className={`text-2xl font-bold ${
+                  isRouteActive(route.path)
+                    ? "line-through"
+                    : "hover:line-through"
+                } text-black cursor-pointer ml-8`}
+              >
+                {route.label}
+              </Link>
+            ))}
             <div
               onClick={() => signOut()}
-              className="
-              font-ubuntu-mono text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
+              className="font-ubuntu-mono text-2xl font-bold hover:line-through text-black cursor-pointer ml-8"
             >
               Sign Out
             </div>
