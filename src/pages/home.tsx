@@ -1,10 +1,19 @@
+import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import UserProfile from "@/components/userProfile";
+import Link from "next/link";
 
 const HomePage = () => {
+  const [userProfileVisible, setUserProfileVisible] = useState(true);
   const { data: session, status } = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUserProfileVisible(false);
+    }, 3000);
+  }, []);
 
   // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
   if (status === "loading") {
@@ -24,7 +33,19 @@ const HomePage = () => {
 
   return (
     <main className="flex justify-center items-center h-screen ">
-      <UserProfile />
+      {userProfileVisible ? (
+        <UserProfile />
+      ) : (
+        <div className="position: absolute z-10">
+          <Link
+            href="/astronauts"
+            style={{ animation: "fadein 1s" }}
+            className="text-4xl font-bold text-white hover:line-through"
+          >
+            Click here learn about some cool astronauts!
+          </Link>
+        </div>
+      )}
     </main>
   );
 };
