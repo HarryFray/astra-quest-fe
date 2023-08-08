@@ -60,6 +60,10 @@ const AstronautsPage = () => {
           mysteries.
         </p>
         <div className="mt-8 w-full">
+          <div className="flex justify-between px-4 py-2 border-b border-gray-300 font-bold">
+            <h3 className="text-lg">Astronaut</h3>
+            <h3 className="text-lg">Craft</h3>
+          </div>
           {allAstronaut.map((astronaut, index) => (
             <div
               key={index}
