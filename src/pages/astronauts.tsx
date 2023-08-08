@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
+import { FaSpinner } from "react-icons/fa";
 
 const createCleanLink = (name: string) => {
   return name.toLowerCase().replace(" ", "-");
@@ -21,10 +22,12 @@ interface Astronaut {
 
 const AstronautsPage = () => {
   const [allAstronaut, setAllAstronaut] = useState<Astronaut[]>([]);
+  const [loadingAstronaut, setLoadingAstronaut] = useState(true);
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
+    setLoadingAstronaut(true);
     async function fetchAllAstronaut() {
       try {
         const response = await axios.get("/api/astronauts");
@@ -32,6 +35,8 @@ const AstronautsPage = () => {
         setAllAstronaut(data.people);
       } catch (error) {
         console.error("Error fetching astronauts data:", error);
+      } finally {
+        setLoadingAstronaut(false);
       }
     }
 
@@ -54,6 +59,15 @@ const AstronautsPage = () => {
   if (!session) {
     router.push("/");
     return null;
+  }
+  if (loadingAstronaut) {
+    return (
+      <main className="flex justify-center items-center h-screen">
+        <div className="flex items-center space-x-4 z-10">
+          <FaSpinner className="animate-spin text-indigo-700 text-8xl text-white" />
+        </div>
+      </main>
+    );
   }
 
   return (
