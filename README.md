@@ -1,43 +1,67 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+`# Space Explorer Web Application
+
+Welcome to the Space Explorer web application! This project is built using React.js and Node.js, providing a platform for you to embark on an epic journey to explore the cosmos and uncover its mysteries.
 
 ## Getting Started
 
-First, run the development server:
+To run the application, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+1. Clone this repository to your local machine.
+2. Navigate to the project directory and install the required dependencies using the command:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+   ```bash
+   yarn install `
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+   ```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+3. Start the development server by running:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+   bashCopy code
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+   `yarn dev`
 
-## Learn More
+4. Open [http://localhost:3000](http://localhost:3000/) in your browser to see the application in action.
 
-To learn more about Next.js, take a look at the following resources:
+## Authentication
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Unauthenticated users are directed to a login page, where they can either use a third-party Single Sign On (SSO) provider (Google, Facebook, LinkedIn, Twitter, Firebase, etc.) or choose to perform a local login using a fixed username and password.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Main Page
 
-## Deploy on Vercel
+Once authenticated, users are welcomed with a personalized message based on their login information. For SSO users, their first name is used, while local login users see their chosen username.
 
-```bash
-yarn deploy
+## Features
 
-```
+The application provides the following features:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Profile
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Clicking on the "Profile" option in the menu takes users to their personal profile page. Here, they can view and edit their profile information.
+
+### Astronauts
+
+Selecting the "Astronauts" option from the menu displays a table of the current astronauts in space. The table includes two columns: "Astronaut Name" and "Craft" they are located on.
+
+API documentation for People in Space: [Open Notify API - People In Space](http://open-notify.org/Open-Notify-API/People-In-Space)
+
+### ISS Location
+
+Clicking on the "ISS Location" option opens a page displaying a map showing the real-time location of the International Space Station (ISS) as it orbits the Earth.
+
+API documentation for ISS Current Location: [Open Notify API - ISS Location Now](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
+
+### Logout
+
+Users can easily log out from the application by selecting the "Logout" option in the menu. This action redirects them back to the login page.
+
+## Deployment
+
+To deploy the application on Vercel, use the following command:
+
+bashCopy code
+
+`yarn deploy`
+
+Now you're ready to explore the universe and learn fascinating information about astronauts and the International Space Station. Happy space exploration!
+
+For any issues or inquiries, please feel free to contact us at <support@example.com>.
