@@ -20,7 +20,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
 
   useEffect(() => {
-    document.title = `AstroQuest: ${router.pathname}`;
+    document.title = `AstraQuest ${router.pathname.split("/")[1]}`;
   }, [session, status, router]);
 
   const isRouteActive = (pathname: string) => {

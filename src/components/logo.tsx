@@ -10,10 +10,10 @@ const Logo = ({ linkToHome = false }: IFullScreenLoadingProps) => {
       href="/home"
       className="text-4xl font-bold text-white hover:line-through"
     >
-      AstroQuest
+      AstraQuest
     </Link>
   ) : (
-    <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
+    <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstraQuest</h1>
   );
 };
 

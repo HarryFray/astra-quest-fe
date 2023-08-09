@@ -104,7 +104,7 @@ const LearnFromNeil = () => {
           <button
             onClick={() => handleSendMessage()}
             className="bg-indigo-700 text-white px-4 py-2 rounded hover:bg-indigo-600 w-3/12"
-            disabled={loadingConversation}
+            disabled={loadingConversation || message === ""}
           >
             Send
           </button>

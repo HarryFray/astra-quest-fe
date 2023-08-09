@@ -17,7 +17,7 @@ interface ApiResponse {
 
 const containerStyle = {
   width: "800px",
-  height: "500px",
+  height: "400px",
   zIndex: 10,
 };
 
@@ -66,7 +66,7 @@ const IssLocationPage = () => {
       <main className="flex justify-center items-center h-screen ">
         <div className="position: absolute z-10 flex flex-col items-center">
           <div
-            className={`flex flex-col items-center mb-8 p-8 bg-white rounded-lg shadow-lg bg-white bg-opacity-50 backdrop-blur-sm`}
+            className={`flex flex-col items-center mb-4 p-4 bg-white rounded-lg shadow-lg bg-white bg-opacity-50 backdrop-blur-sm`}
           >
             <h3 className="text-4xl font-bold text-indigo-700 mb-4">
               Current ISS Location

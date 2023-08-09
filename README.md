@@ -1,6 +1,6 @@
 # Astro Quest
 
-## LIVE HERE!! [AstroQuest](https://astra-quest.vercel.app/) 🚀🚀🚀
+## LIVE HERE!! [AstraQuest](https://astra-quest.vercel.app/) 🚀🚀🚀
 
 Welcome to the Astro Quest web application! This project was bootstrapped with [Next.js](https://nextjs.org/), providing a platform for you to interact with real Astronauts and track the location of the International Space Station.
 
@@ -11,30 +11,27 @@ To run the application locally, follow these steps:
 1. Clone this repository to your local machine.
 2. Navigate to the project directory and install the required dependencies using the command:
 
-   `yarn install`
+   `yarn` or `npm i`
 
-1.  Reach out to <harry.fray7@gmail.com> for `.env` variables. (secure link utilizing [Doppler Share](https://share.doppler.com/))
+3. Reach out to <harry.fray7@gmail.com> for `.env` variables. (secure link utilizing [Doppler Share](https://share.doppler.com/))
 
-2.  Start the development server by running:
+4. Start the development server by running:
 
-    `yarn dev`
+   `yarn dev` or `npm run dev`
 
-3.  Open [http://localhost:3000](http://localhost:3000/) in your browser to see the application in action.
+5. Open [http://localhost:3000](http://localhost:3000/) in your browser to see the application in action.
 
-Authentication
---------------
+## Authentication
 
 Unauthenticated users are directed to a login page, where they can use third-party Single Sign On (SSO) providers like Google or Github.
 
 This project uses the third-party NPM package [next-auth](https://www.npmjs.com/package/next-auth) for authentication.
 
-Home Page
----------
+## Home Page
 
 Once authenticated, users are welcomed with a personalized message based on their login information.
 
-Features
---------
+## Features
 
 The application provides the following features:
 
@@ -52,7 +49,7 @@ API documentation for People in Space: [Open Notify API - People In Space](http:
 
 Selecting an Astronaut (from the Astronauts page) will allow you to chat with that specific Astronaut on the Astronaut Chat page. This is a full chat feature supported by the OpenAI API. An initial generic question is provided for you.
 
-Serverless repository hitting the OpenAI endpoint managed by me: [goggins-chat-api](https://github.com/HarryFray/goggins-chat-api) 
+Serverless repository hitting the OpenAI endpoint managed by me: [goggins-chat-api](https://github.com/HarryFray/goggins-chat-api)
 API documentation for OpenAI: [OpenAI API Documentation](https://platform.openai.com/docs/introduction)
 
 ### ISS Location
@@ -63,8 +60,7 @@ API documentation for ISS Current Location: [Open Notify API - ISS Location Now]
 
 This feature utilizes the third-party NPM package [@react-google-maps/api](https://www.npmjs.com/package/@react-google-maps/api).
 
-Deployment
-----------
+## Deployment
 
 To deploy the application on Vercel, use the following command:
 
