@@ -77,11 +77,7 @@ const AstronautsPage = () => {
       >
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
         <p className="text-xl text-black text-center">
-          Select a craft or astronaut and embark on an exhilarating journey to
-          uncover fascinating details about them.
-        </p>
-        <p className="text-xl text-black text-center pt-4">
-          Guided by the spirit of Niel Armstrong himself!
+          Select an astronaut you would like to talk to!
         </p>
         <div className="mt-8 w-full">
           <div className="flex justify-between px-4 py-2 border-b border-gray-300 font-bold">
@@ -95,16 +91,11 @@ const AstronautsPage = () => {
             >
               <Link
                 className="text-white hover:text-indigo-700"
-                href={`/person-${createCleanLink(astronaut.name)}`}
+                href={`/astronaut/${createCleanLink(astronaut.name)}`}
               >
                 {astronaut.name}
               </Link>
-              <Link
-                className="text-white hover:text-indigo-700"
-                href={`/craft-${createCleanLink(astronaut.craft)}`}
-              >
-                {astronaut.craft}
-              </Link>
+              <h4 className="text-white">{astronaut.craft}</h4>
             </div>
           ))}
         </div>

@@ -42,7 +42,7 @@ const HomePage = () => {
             style={{ animation: "fadein 1s" }}
             className="text-4xl font-bold text-white hover:line-through"
           >
-            Click here learn about some cool astronauts!
+            Click here to talk to an astronaut!
           </Link>
         </div>
       )}

@@ -5,8 +5,8 @@ import { useSession } from "next-auth/react";
 import { FaSpinner } from "react-icons/fa";
 
 const buildFirstQuestion = (name: string) => {
-  let strippedURl = Boolean(name) ? name.replaceAll("-", " ") : "space";
-  return `Hey Neil, can you tell me something about the ${strippedURl}?`;
+  let strippedURl = Boolean(name) ? name.replaceAll("-", " ") : "Space Person";
+  return `Hey! ${strippedURl} tell me about your last mission?`;
 };
 
 interface Entry {
@@ -18,8 +18,8 @@ const LearnFromNeil = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  const learn_from_neil_topic = String(router.query.learn_from_neil_topic);
-  const initialQuestions = buildFirstQuestion(learn_from_neil_topic);
+  const person = String(router.query.person);
+  const initialQuestions = buildFirstQuestion(person);
 
   const [message, setMessage] = useState(initialQuestions);
   const [conversation, setConversation] = useState<Entry[]>([]);
@@ -44,13 +44,13 @@ const LearnFromNeil = () => {
     try {
       const response = await axios.post(
         "https://yg8ojcoti6.execute-api.us-east-1.amazonaws.com/converse",
-        { message }
+        { message, person }
       );
 
       setConversation([
         ...conversation,
         { role: "user", content: message },
-        { role: "Neil", content: response.data },
+        { role: person, content: response.data },
       ]);
     } catch (error) {
       console.error("Error sending message:", error);
@@ -81,7 +81,7 @@ const LearnFromNeil = () => {
         className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 h-3/5 bg-white bg-opacity-50 backdrop-blur-sm`}
       >
         <h2 className="text-3xl font-bold text-indigo-700 text-center mb-4 border-b-2 pb-4">
-          Chatting with Neil Armstrong
+          {`Chatting with ${person}`}
         </h2>
         <div ref={chatRef} className="mb-4 w-fit h-full overflow-y-auto">
           {conversation.map((entry, index) => {
@@ -93,7 +93,7 @@ const LearnFromNeil = () => {
                 }`}
               >
                 <strong>
-                  {entry.role === "user" ? session?.user?.name : "Neil"}:{" "}
+                  {entry.role === "user" ? session?.user?.name : person}:{" "}
                 </strong>
                 {entry.content}
               </div>
