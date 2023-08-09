@@ -6,8 +6,8 @@ import Link from "next/link";
 import FullScreenLoading from "@/components/fullScreenLoading";
 import Logo from "@/components/logo";
 
-const createNameEndpointString = (name: string) => {
-  return name.toLowerCase().replace(" ", "-");
+const createSlugFromName = (name: string) => {
+  return name.toLowerCase().replaceAll(" ", "-");
 };
 
 interface AstronautData {
@@ -88,9 +88,7 @@ const AstronautsPage = () => {
               >
                 <Link
                   className="text-white hover:text-indigo-700"
-                  href={`/astronaut/${createNameEndpointString(
-                    astronaut.name
-                  )}`}
+                  href={`/astronaut/${createSlugFromName(astronaut.name)}`}
                 >
                   {astronaut.name}
                 </Link>

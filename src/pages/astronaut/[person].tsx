@@ -4,9 +4,11 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { FaSpinner } from "react-icons/fa";
 
-const buildFirstQuestion = (name: string) => {
-  let strippedURl = Boolean(name) ? name.replaceAll("-", " ") : "Space Person";
-  return `Hey! ${strippedURl} tell me about your last mission?`;
+const convertToNameCaseFromSlug = (name: string) => {
+  return name
+    ?.split("-")
+    ?.map((word) => word[0].toUpperCase() + word.slice(1))
+    ?.join(" ");
 };
 
 interface Entry {
@@ -18,8 +20,8 @@ const LearnFromNeil = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
 
-  const person = String(router.query.person);
-  const initialQuestions = buildFirstQuestion(person);
+  const person = convertToNameCaseFromSlug(router.query.person as string);
+  let initialQuestions = `Hey ${person}! Tell me about your last mission?`;
 
   const [message, setMessage] = useState(initialQuestions);
   const [conversation, setConversation] = useState<Entry[]>([]);
