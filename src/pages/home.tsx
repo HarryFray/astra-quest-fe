@@ -6,15 +6,17 @@ import Link from "next/link";
 
 const HomePage = () => {
   const [userProfileVisible, setUserProfileVisible] = useState(true);
+
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
       setUserProfileVisible(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
+  // TODO: UTILIZE ON ALL PROTECTED ROUTES
   // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
   if (status === "loading") {
     return (
@@ -38,9 +40,9 @@ const HomePage = () => {
       ) : (
         <div className="position: absolute z-10">
           <Link
-            href="/astronauts"
-            style={{ animation: "fadein 1s" }}
             className="text-4xl font-bold text-white hover:line-through"
+            style={{ animation: "fadein 1s" }}
+            href="/astronauts"
           >
             Click here to talk to an astronaut!
           </Link>
