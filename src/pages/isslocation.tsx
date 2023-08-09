@@ -22,7 +22,7 @@ const containerStyle = {
   zIndex: 10,
 };
 
-const IssLocation = () => {
+const IssLocationPage = () => {
   const [currentIssLocation, setCurrentIssLocation] = useState(
     {} as IssPosition
   );
@@ -116,4 +116,4 @@ const IssLocation = () => {
   );
 };
 
-export default IssLocation;
+export default IssLocationPage;
