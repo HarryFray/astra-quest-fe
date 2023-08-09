@@ -86,23 +86,25 @@ const IssLocation = () => {
 
   return (
     <main className="flex justify-center items-center h-screen ">
-      <div
-        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 bg-white bg-opacity-50 backdrop-blur-sm`}
-      >
-        <h3 className="text-4xl font-bold text-indigo-700 mb-4">
-          ISS Location
-        </h3>
-        <h4 className="text-2xl font-bold text-white mb-4">
-          {`Lat: ${currentLoc.latitude} Long: ${currentLoc.longitude}`}
-        </h4>
-      </div>
-      <div>
+      <div className="position: absolute z-10 flex flex-col items-center">
+        <div
+          className={`flex flex-col items-center mb-8 p-8 bg-white rounded-lg shadow-lg bg-white bg-opacity-50 backdrop-blur-sm`}
+        >
+          <h3 className="text-4xl font-bold text-indigo-700 mb-4">
+            ISS Location
+          </h3>
+          <h4 className="text-2xl font-bold text-white mb-4">
+            {`Lat: ${currentLoc.latitude} Long: ${currentLoc.longitude}`}
+          </h4>
+        </div>
         {isLoaded && (
           <GoogleMap
             mapContainerStyle={containerStyle}
             center={googleLatLng}
             zoom={2}
-          />
+          >
+            <Marker position={googleLatLng} />
+          </GoogleMap>
         )}
       </div>
     </main>
