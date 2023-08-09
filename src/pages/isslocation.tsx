@@ -23,8 +23,11 @@ const containerStyle = {
 };
 
 const IssLocation = () => {
-  const [currentLoc, setCurrentLoc] = useState({} as IssPosition);
-  const [loadingLoc, setLoadingLoc] = useState(true);
+  const [currentIssLocation, setCurrentIssLocation] = useState(
+    {} as IssPosition
+  );
+  const [loadingIssLocation, setLoadingIssLocation] = useState(true);
+
   const { data: session, status } = useSession();
   const router = useRouter();
 
@@ -33,25 +36,20 @@ const IssLocation = () => {
     googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY as string,
   });
 
-  const googleLatLng = {
-    lat: Number(currentLoc.latitude),
-    lng: Number(currentLoc.longitude),
-  };
-
   const fetchIssLocation = useCallback(async () => {
     try {
       const response = await axios.get("/api/issloc");
       const data: ApiResponse = response.data;
-      setCurrentLoc(data.iss_position);
+      setCurrentIssLocation(data.iss_position);
     } catch (error) {
       console.error("Error fetching ISS location:", error);
     } finally {
-      setLoadingLoc(false);
+      setLoadingIssLocation(false);
     }
   }, []);
 
   useEffect(() => {
-    setLoadingLoc(true);
+    setLoadingIssLocation(true);
     if (status === "authenticated") {
       fetchIssLocation();
       const interval = setInterval(fetchIssLocation, 2000);
@@ -59,6 +57,12 @@ const IssLocation = () => {
     }
   }, [status, fetchIssLocation]);
 
+  const googleLatLng = {
+    lat: Number(currentIssLocation.latitude),
+    lng: Number(currentIssLocation.longitude),
+  };
+
+  // TODO: UTILIZE ON ALL PROTECTED ROUTES
   // TODO: SHOULD BE ELEVATED TO A HIGHER ORDER COMPONENT
   if (status === "loading") {
     return (
@@ -75,7 +79,7 @@ const IssLocation = () => {
     return null;
   }
 
-  if (loadingLoc) {
+  if (loadingIssLocation) {
     return (
       <main className="flex justify-center items-center h-screen">
         <div className="flex items-center space-x-4 z-10">
@@ -95,7 +99,7 @@ const IssLocation = () => {
             Current ISS Location
           </h3>
           <h4 className="text-2xl font-bold text-white mb-4">
-            {`Lat: ${currentLoc.latitude} Long: ${currentLoc.longitude}`}
+            {`Lat: ${currentIssLocation.latitude} Long: ${currentIssLocation.longitude}`}
           </h4>
         </div>
         {isLoaded && (
