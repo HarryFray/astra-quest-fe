@@ -38,27 +38,28 @@ const IssLocation = () => {
     lng: Number(currentLoc.longitude),
   };
 
+  const fetchIssLocation = useCallback(async () => {
+    try {
+      const response = await axios.get("/api/issloc");
+      const data: ApiResponse = response.data;
+      setCurrentLoc(data.iss_position);
+    } catch (error) {
+      console.error("Error fetching ISS location:", error);
+    } finally {
+      setLoadingLoc(false);
+    }
+  }, []);
+
   useEffect(() => {
     setLoadingLoc(true);
-    async function fetchIssLocation() {
-      try {
-        const response = await axios.get("/api/issloc");
-        const data: ApiResponse = response.data;
-
-        setCurrentLoc(data.iss_position);
-      } catch (error) {
-        console.error("Error fetching ISS location:", error);
-      } finally {
-        setLoadingLoc(false);
-      }
-    }
-
     if (status === "authenticated") {
       fetchIssLocation();
+      const interval = setInterval(fetchIssLocation, 2000);
+      return () => clearInterval(interval);
     }
-  }, [status]);
+  }, [status, fetchIssLocation]);
 
-  // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
+  // TODO: SHOULD BE ELEVATED TO A HIGHER ORDER COMPONENT
   if (status === "loading") {
     return (
       <main className="flex justify-center items-center h-screen ">
@@ -68,7 +69,7 @@ const IssLocation = () => {
   }
 
   // TODO: UTILIZE ON ALL PROTECTED ROUTES
-  // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
+  // TODO: SHOULD BE ELEVATED TO A HIGHER ORDER COMPONENT
   if (!session) {
     router.push("/");
     return null;
@@ -91,7 +92,7 @@ const IssLocation = () => {
           className={`flex flex-col items-center mb-8 p-8 bg-white rounded-lg shadow-lg bg-white bg-opacity-50 backdrop-blur-sm`}
         >
           <h3 className="text-4xl font-bold text-indigo-700 mb-4">
-            ISS Location
+            Current ISS Location
           </h3>
           <h4 className="text-2xl font-bold text-white mb-4">
             {`Lat: ${currentLoc.latitude} Long: ${currentLoc.longitude}`}
