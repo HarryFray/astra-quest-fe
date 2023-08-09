@@ -56,8 +56,8 @@ const IssLocationPage = () => {
   }, [status, fetchIssLocation]);
 
   const googleLatLng = {
-    lat: Number(currentIssLocation.latitude),
-    lng: Number(currentIssLocation.longitude),
+    lat: Number(currentIssLocation.latitude) || 0,
+    lng: Number(currentIssLocation.longitude) || 0,
   };
 
   return (
