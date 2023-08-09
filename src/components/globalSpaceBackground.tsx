@@ -5,7 +5,6 @@ import Particles from "react-tsparticles";
 
 const PARTICLES_CONFIG = {
   fpsLimit: 60,
-  // TODO: CORRECTY RESOLVE TS ERROR HERE
   detect_on: "canvas",
   particles: {
     number: {

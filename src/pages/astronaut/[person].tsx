@@ -16,7 +16,7 @@ interface Entry {
   content: string;
 }
 
-const LearnFromNeil = () => {
+const AstronautChatPage = () => {
   const router = useRouter();
 
   const { session } = useProtectedRoute();
@@ -114,4 +114,4 @@ const LearnFromNeil = () => {
   );
 };
 
-export default LearnFromNeil;
+export default AstronautChatPage;
