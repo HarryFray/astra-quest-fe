@@ -10,6 +10,7 @@ interface Route {
 const routes: Route[] = [
   { path: "/astronauts", label: "Astronauts" },
   { path: "/profile", label: "Profile" },
+  { path: "/isslocation", label: "ISS Location" },
 ];
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
