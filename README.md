@@ -1,4 +1,4 @@
-# Astro Quest
+# AstraQuest
 
 ## LIVE HERE!! [AstraQuest](https://astra-quest.vercel.app/) 🚀🚀🚀
 
