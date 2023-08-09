@@ -1,33 +1,40 @@
 # Astro Quest
 
-Welcome to the Space Explorer web application! This project what bootstrapped with [Next.js](https://nextjs.org/), providing a platform for you to speak with real Astronauts and see the location of the international space station
+## LIVE HERE!! [AstroQuest](https://astra-quest.vercel.app/) 🚀🚀🚀
 
-## Getting Started
+Welcome to the Astro Quest web application! This project was bootstrapped with [Next.js](https://nextjs.org/), providing a platform for you to interact with real Astronauts and track the location of the International Space Station.
 
-To run the application, follow these steps:
+## Getting Started Locally (Feel free to simply log in on the deployed app to check it out)
+
+To run the application locally, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Navigate to the project directory and install the required dependencies using the command:
 
    `yarn install`
 
-3. Start the development server by running:
+1.  Reach out to <harry.fray7@gmail.com> for `.env` variables.
 
-   `yarn dev`
+2.  Start the development server by running:
 
-4. Open [http://localhost:3000](http://localhost:3000/) in your browser to see the application in action.
+    `yarn dev`
 
-## Authentication
+3.  Open [http://localhost:3000](http://localhost:3000/) in your browser to see the application in action.
 
-Unauthenticated users are directed to a login page, where they can use a third-party Single Sign On (SSO) provider Google or Github
+Authentication
+--------------
 
-3rd party NPM package utlized [next-auth](https://www.npmjs.com/package/next-auth)
+Unauthenticated users are directed to a login page, where they can use third-party Single Sign On (SSO) providers like Google or Github.
 
-## Home Page
+This project uses the third-party NPM package [next-auth](https://www.npmjs.com/package/next-auth) for authentication.
+
+Home Page
+---------
 
 Once authenticated, users are welcomed with a personalized message based on their login information.
 
-## Features
+Features
+--------
 
 The application provides the following features:
 
@@ -41,35 +48,32 @@ Selecting the "Astronauts" option from the menu displays a table of the current 
 
 API documentation for People in Space: [Open Notify API - People In Space](http://open-notify.org/Open-Notify-API/People-In-Space)
 
-### Astronaut
+### Astronaut Chat
 
-Selecting an Astronaut (from the Astronauts page) will allow you to chat with that specific Astronaut on the Astronaut page. This is a full chat feature supported by openapi. An intial generic question is asked for you.
+Selecting an Astronaut (from the Astronauts page) will allow you to chat with that specific Astronaut on the Astronaut Chat page. This is a full chat feature supported by the OpenAI API. An initial generic question is provided for you.
 
-Serverless repo hitting openAI endpoint managed by me: [goggins-chat-api](https://github.com/HarryFray/goggins-chat-api)
-API documentation for openAI: [openAI](https://platform.openai.com/docs/introduction)
+Serverless repository hitting the OpenAI endpoint managed by me: [goggins-chat-api](https://github.com/HarryFray/goggins-chat-api) 
+API documentation for OpenAI: [OpenAI API Documentation](https://platform.openai.com/docs/introduction)
 
 ### ISS Location
 
-Clicking on the "ISS Location" option opens a page displaying a map showing the real-time location of the International Space Station (ISS) as it orbits the Earth.
+Clicking on the "ISS Location" option opens a page displaying a map showing the real-time location of the International Space Station (ISS) as it orbits the Earth. Updated every second.
 
 API documentation for ISS Current Location: [Open Notify API - ISS Location Now](http://open-notify.org/Open-Notify-API/ISS-Location-Now/)
 
-3rd party NPM package utlized: [@react-google-maps/api](https://www.npmjs.com/package/@react-google-maps/api)
+This feature utilizes the third-party NPM package [@react-google-maps/api](https://www.npmjs.com/package/@react-google-maps/api).
 
-### Logout
-
-Users can easily log out from the application by selecting the "Logout" option in the menu. This action redirects them back to the login page.
-
-## Deployment
+Deployment
+----------
 
 To deploy the application on Vercel, use the following command:
 
 `yarn deploy`
 
-or push to main
+Alternatively, you can push to the main branch.
 
 ##
 
-Now you're ready to explore the universe and learn fascinating information about astronauts and the International Space Station. Happy space exploration!
+Now you're ready to explore the universe, engage with real astronauts, and learn fascinating information about the International Space Station. Happy space exploration!
 
 For any issues or inquiries, please feel free to contact us at <harry.fray7@gmail.com>.
