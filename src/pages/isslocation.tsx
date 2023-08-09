@@ -2,7 +2,7 @@ import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import FullScreenLoading from "@/components/fullScreenLoading";
-import useProtectedRoute from "@/hooks/useProtectedRotue";
+import useProtectedRoute from "@/hooks/useProtectedRoute";
 
 interface IssPosition {
   latitude: number;

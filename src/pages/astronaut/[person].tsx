@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { FaSpinner } from "react-icons/fa";
-import useProtectedRoute from "@/hooks/useProtectedRotue";
+import useProtectedRoute from "@/hooks/useProtectedRoute";
 
 const convertToNameCaseFromSlug = (name: string) => {
   return name

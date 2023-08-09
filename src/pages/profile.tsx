@@ -1,5 +1,5 @@
 import UserProfileCard from "@/components/userProfileCard";
-import useProtectedRoute from "@/hooks/useProtectedRotue";
+import useProtectedRoute from "@/hooks/useProtectedRoute";
 
 const ProfilePage = () => {
   useProtectedRoute();

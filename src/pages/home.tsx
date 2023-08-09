@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import UserProfileCard from "@/components/userProfileCard";
 import Link from "next/link";
-import useProtectedRoute from "@/hooks/useProtectedRotue";
+import useProtectedRoute from "@/hooks/useProtectedRoute";
 
 const HomePage = () => {
   const [userProfileVisible, setUserProfileVisible] = useState(true);

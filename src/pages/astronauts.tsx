@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-import FullScreenLoading from "../components/fullScreenLoading";
-import Logo from "../components/logo";
-import useProtectedRoute from "../hooks/useProtectedRotue";
+import FullScreenLoading from "@/components/fullScreenLoading";
+import Logo from "@/components/logo";
+import useProtectedRoute from "@/hooks/useProtectedRoute";
 
 const createSlugFromName = (name: string) => {
   return name.toLowerCase().replaceAll(" ", "-");

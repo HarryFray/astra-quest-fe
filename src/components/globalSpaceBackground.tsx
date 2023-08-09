@@ -117,6 +117,7 @@ const PARTICLES_CONFIG = {
 };
 
 const ParticleBackground: React.FC = () => {
+  // TODO: UPDATE TO NOT USE ANY
   const particlesInit = useCallback(async (engine: any) => {
     await loadFull(engine);
   }, []);
