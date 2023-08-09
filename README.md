@@ -68,6 +68,15 @@ To deploy the application on Vercel, use the following command:
 
 Alternatively, you can push to the main branch.
 
+## All Scripts
+
+- `dev`: Start the development server using Next.js.
+- `build`: Build your Next.js application for production.
+- `start`: Start your Next.js application in production mode.
+- `lint`: Lint your code using the Next.js ESLint configuration.
+- `deploy`: Deploy your application using Vercel.
+- `test`: Run your test suite using Jest.
+
 ##
 
 Now you're ready to explore the universe, engage with real astronauts, and learn fascinating information about the International Space Station. Happy space exploration!
