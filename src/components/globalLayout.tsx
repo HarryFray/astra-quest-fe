@@ -53,7 +53,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
               onClick={() => signOut()}
               className="font-ubuntu-mono text-2xl font-bold hover:line-through text-white cursor-pointer ml-8"
             >
-              Sign Out
+              Logout
             </div>
           </div>
         </header>

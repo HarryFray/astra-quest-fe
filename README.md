@@ -13,7 +13,7 @@ To run the application locally, follow these steps:
 
    `yarn install`
 
-1.  Reach out to <harry.fray7@gmail.com> for `.env` variables.
+1.  Reach out to <harry.fray7@gmail.com> for `.env` variables. (secure link utilizing [Doppler Share](https://share.doppler.com/))
 
 2.  Start the development server by running:
 
