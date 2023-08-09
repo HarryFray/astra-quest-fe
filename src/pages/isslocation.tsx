@@ -74,9 +74,9 @@ const IssLocation = () => {
         <h3 className="text-4xl font-bold text-indigo-700 mb-4">
           ISS Location
         </h3>
-        <h1 className="text-2xl font-bold text-white mb-4">
+        <h4 className="text-2xl font-bold text-white mb-4">
           {`Lat: ${currentLoc.latitude} Long: ${currentLoc.longitude}`}
-        </h1>
+        </h4>
       </div>
     </main>
   );
