@@ -9,11 +9,11 @@ To run the application, follow these steps:
 1. Clone this repository to your local machine.
 2. Navigate to the project directory and install the required dependencies using the command:
 
-   ```yarn install```
+   `yarn install`
 
 3. Start the development server by running:
 
-   ```yarn dev```
+   `yarn dev`
 
 4. Open [http://localhost:3000](http://localhost:3000/) in your browser to see the application in action.
 
@@ -43,6 +43,10 @@ API documentation for People in Space: [Open Notify API - People In Space](http:
 
 ### Astronaut
 
+Selecting an Astronaut (from the Astronauts page) will allow you to chat with that specific Astronaut on the Astronaut page. This is a full chat feature supported by openapi. An intial generic question is asked for you.
+
+Serverless repo hitting openAI endpoint managed by me: [goggins-chat-api](https://github.com/HarryFray/goggins-chat-api)
+API documentation for openAI: [openAI](https://platform.openai.com/docs/introduction)
 
 ### ISS Location
 
@@ -60,9 +64,11 @@ Users can easily log out from the application by selecting the "Logout" option i
 
 To deploy the application on Vercel, use the following command:
 
-```yarn deploy```
+`yarn deploy`
 
 or push to main
+
+##
 
 Now you're ready to explore the universe and learn fascinating information about astronauts and the International Space Station. Happy space exploration!
 
