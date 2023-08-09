@@ -2,8 +2,8 @@ import { SessionProvider } from "next-auth/react";
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import React from "react";
-import RootLayout from "@/components/layout";
-import ParticleBackground from "@/components/spaceBackground";
+import GlobalLayout from "@/components/globalLayout";
+import GlobalSpaceBackground from "@/components/globalSpaceBackground";
 
 export default function App({
   Component,
@@ -11,10 +11,10 @@ export default function App({
 }: AppProps) {
   return (
     <SessionProvider session={pageProps.session}>
-      <ParticleBackground />
-      <RootLayout>
+      <GlobalSpaceBackground />
+      <GlobalLayout>
         <Component {...pageProps} />
-      </RootLayout>
+      </GlobalLayout>
     </SessionProvider>
   );
 }

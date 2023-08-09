@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import UserProfile from "@/components/userProfile";
+import UserProfileCard from "@/components/userProfileCard";
 import Link from "next/link";
 
 const HomePage = () => {
@@ -36,7 +36,7 @@ const HomePage = () => {
   return (
     <main className="flex justify-center items-center h-screen ">
       {userProfileVisible ? (
-        <UserProfile />
+        <UserProfileCard />
       ) : (
         <div className="position: absolute z-10">
           <Link

@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import UserProfile from "@/components/userProfile";
+import UserProfileCard from "@/components/userProfileCard";
 
 const ProfilePage = () => {
   const { data: session, status } = useSession();
@@ -25,7 +25,7 @@ const ProfilePage = () => {
 
   return (
     <main className="flex justify-center items-center h-screen ">
-      <UserProfile />
+      <UserProfileCard />
     </main>
   );
 };
