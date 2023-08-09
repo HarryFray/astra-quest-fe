@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -15,8 +16,12 @@ const HEADER_ROUTES: Route[] = [
 ];
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   const router = useRouter();
+
+  useEffect(() => {
+    document.title = `AstroQuest: ${router.pathname}`;
+  }, [session, status, router]);
 
   const isRouteActive = (pathname: string) => {
     return router.pathname === pathname;
