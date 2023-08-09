@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
+import Logo from "@/components/logo";
 
 interface Route {
   path: string;
   label: string;
 }
 
-const routes: Route[] = [
+const HEADER_ROUTES: Route[] = [
   { path: "/astronauts", label: "Astronauts" },
   { path: "/isslocation", label: "ISS Location" },
   { path: "/profile", label: "Profile" },
@@ -27,14 +28,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
         <header
           className={`fixed top-0 left-0 right-0 p-4 w-screen flex items-center justify-between z-50 bg-white bg-opacity-50 backdrop-blur-sm`}
         >
-          <Link
-            href="/home"
-            className="text-4xl font-bold text-white hover:line-through"
-          >
-            AstroQuest
-          </Link>
+          <Logo linkToHome />
           <div className="flex">
-            {routes.map((route) => (
+            {HEADER_ROUTES.map((route) => (
               <Link
                 key={route.path}
                 href={route.path}

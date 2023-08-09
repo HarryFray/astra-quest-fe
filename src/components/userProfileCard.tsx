@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Logo from "@/components/logo";
 
 const UserProfile = () => {
   const { data: session } = useSession();
@@ -8,7 +9,7 @@ const UserProfile = () => {
     <div
       className={`position: absolute z-10 flex flex-col items-center p-8 rounded-lg bg-white bg-opacity-50 backdrop-blur-sm`}
     >
-      <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
+      <Logo />
       <div className="flex flex-col items-center">
         {session?.user?.image && (
           <div className="rounded-full w-20 h-20 mb-2 overflow-hidden">

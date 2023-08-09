@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
 import FullScreenLoading from "@/components/fullScreenLoading";
+import Logo from "@/components/logo";
 
 const createNameEndpointString = (name: string) => {
   return name.toLowerCase().replace(" ", "-");
@@ -71,9 +72,7 @@ const AstronautsPage = () => {
         <div
           className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 bg-white bg-opacity-50 backdrop-blur-sm`}
         >
-          <h1 className="text-4xl font-bold text-indigo-700 mb-4">
-            AstroQuest
-          </h1>
+          <Logo />
           <p className="text-xl text-black text-center">
             Select an astronaut you would like to talk to!
           </p>
