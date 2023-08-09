@@ -28,8 +28,9 @@ const LandingPage = () => {
       >
         <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
         <p className="text-lg text-white text-center mb-8">
-          Embark on an epic space journey to explore the cosmos and uncover its
-          mysteries.
+          Are you prepared to delve into the realm of space exploration? Engage
+          in conversations with actual astronauts and unveil the present
+          coordinates of the International Space Station!
         </p>
         <div className="mt-4">
           <button
