@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { useSession } from "next-auth/react";
 import { FaSpinner } from "react-icons/fa";
+import useProtectedRoute from "@/hooks/useProtectedRotue";
 
 const convertToNameCaseFromSlug = (name: string) => {
   return name
@@ -18,7 +18,8 @@ interface Entry {
 
 const LearnFromNeil = () => {
   const router = useRouter();
-  const { data: session, status } = useSession();
+
+  const { session } = useProtectedRoute();
 
   const person = convertToNameCaseFromSlug(router.query.person as string);
   let initialQuestions = `Hey ${person}! Tell me about your last mission?`;
@@ -60,22 +61,6 @@ const LearnFromNeil = () => {
       setLoadingConversation(false);
     }
   };
-
-  // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
-  if (status === "loading") {
-    return (
-      <main className="flex justify-center items-center h-screen ">
-        <p>Loading...</p>
-      </main>
-    );
-  }
-
-  // TODO: UTILIZE ON ALL PROTECTED ROUTES
-  // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
-  if (!session) {
-    router.push("/");
-    return null;
-  }
 
   return (
     <main className="flex flex-col justify-center items-center h-screen ">

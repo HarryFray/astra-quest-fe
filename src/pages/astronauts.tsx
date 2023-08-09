@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
 import FullScreenLoading from "@/components/fullScreenLoading";
 import Logo from "@/components/logo";
+import useProtectedRoute from "@/hooks/useProtectedRotue";
 
 const createSlugFromName = (name: string) => {
   return name.toLowerCase().replaceAll(" ", "-");
@@ -25,8 +24,7 @@ const AstronautsPage = () => {
   const [allAstronaut, setAllAstronaut] = useState<Astronaut[]>([]);
   const [loadingAstronaut, setLoadingAstronaut] = useState(true);
 
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  const { status } = useProtectedRoute();
 
   useEffect(() => {
     setLoadingAstronaut(true);
@@ -47,23 +45,6 @@ const AstronautsPage = () => {
       fetchAllAstronauts();
     }
   }, [status]);
-
-  // TODO: UTILIZE ON ALL PROTECTED ROUTES
-  // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
-  if (status === "loading") {
-    return (
-      <main className="flex justify-center items-center h-screen ">
-        <p>Loading...</p>
-      </main>
-    );
-  }
-
-  // TODO: UTILIZE ON ALL PROTECTED ROUTES
-  // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
-  if (!session) {
-    router.push("/");
-    return null;
-  }
 
   return (
     <>

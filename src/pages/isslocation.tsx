@@ -1,9 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
-import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import axios from "axios";
 import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 import FullScreenLoading from "@/components/fullScreenLoading";
+import useProtectedRoute from "@/hooks/useProtectedRotue";
 
 interface IssPosition {
   latitude: number;
@@ -28,8 +27,7 @@ const IssLocationPage = () => {
   );
   const [loadingIssLocation, setLoadingIssLocation] = useState(true);
 
-  const { data: session, status } = useSession();
-  const router = useRouter();
+  const { status } = useProtectedRoute();
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -61,23 +59,6 @@ const IssLocationPage = () => {
     lat: Number(currentIssLocation.latitude),
     lng: Number(currentIssLocation.longitude),
   };
-
-  // TODO: UTILIZE ON ALL PROTECTED ROUTES
-  // TODO: SHOULD BE ELEVATED TO A HIGHER ORDER COMPONENT
-  if (status === "loading") {
-    return (
-      <main className="flex justify-center items-center h-screen ">
-        <p>Loading...</p>
-      </main>
-    );
-  }
-
-  // TODO: UTILIZE ON ALL PROTECTED ROUTES
-  // TODO: SHOULD BE ELEVATED TO A HIGHER ORDER COMPONENT
-  if (!session) {
-    router.push("/");
-    return null;
-  }
 
   return (
     <>
