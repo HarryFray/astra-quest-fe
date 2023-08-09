@@ -3,7 +3,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import axios from "axios";
 import Link from "next/link";
-import { FaSpinner } from "react-icons/fa";
+import FullScreenLoading from "@/components/fullScreenLoading";
 
 const createNameEndpointString = (name: string) => {
   return name.toLowerCase().replace(" ", "-");
@@ -64,47 +64,44 @@ const AstronautsPage = () => {
     return null;
   }
 
-  if (loadingAstronaut) {
-    return (
-      <main className="flex justify-center items-center h-screen">
-        <div className="flex items-center space-x-4 z-10">
-          <FaSpinner className="animate-spin text-indigo-700 text-8xl text-white" />
+  return (
+    <>
+      <FullScreenLoading loading={loadingAstronaut} />
+      <main className="flex justify-center items-center h-screen ">
+        <div
+          className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 bg-white bg-opacity-50 backdrop-blur-sm`}
+        >
+          <h1 className="text-4xl font-bold text-indigo-700 mb-4">
+            AstroQuest
+          </h1>
+          <p className="text-xl text-black text-center">
+            Select an astronaut you would like to talk to!
+          </p>
+          <div className="mt-8 w-full">
+            <div className="flex justify-between px-4 py-2 border-b border-gray-300 font-bold">
+              <h3 className="text-white text-lg">Astronaut</h3>
+              <h3 className="text-white text-lg">Craft</h3>
+            </div>
+            {allAstronaut.map((astronaut, index) => (
+              <div
+                key={index}
+                className="flex justify-between px-4 py-2 border-b border-gray-300"
+              >
+                <Link
+                  className="text-white hover:text-indigo-700"
+                  href={`/astronaut/${createNameEndpointString(
+                    astronaut.name
+                  )}`}
+                >
+                  {astronaut.name}
+                </Link>
+                <h4 className="text-white">{astronaut.craft}</h4>
+              </div>
+            ))}
+          </div>
         </div>
       </main>
-    );
-  }
-
-  return (
-    <main className="flex justify-center items-center h-screen ">
-      <div
-        className={`position: absolute z-10 flex flex-col items-center p-8 bg-white rounded-lg shadow-lg w-2/5 bg-white bg-opacity-50 backdrop-blur-sm`}
-      >
-        <h1 className="text-4xl font-bold text-indigo-700 mb-4">AstroQuest</h1>
-        <p className="text-xl text-black text-center">
-          Select an astronaut you would like to talk to!
-        </p>
-        <div className="mt-8 w-full">
-          <div className="flex justify-between px-4 py-2 border-b border-gray-300 font-bold">
-            <h3 className="text-white text-lg">Astronaut</h3>
-            <h3 className="text-white text-lg">Craft</h3>
-          </div>
-          {allAstronaut.map((astronaut, index) => (
-            <div
-              key={index}
-              className="flex justify-between px-4 py-2 border-b border-gray-300"
-            >
-              <Link
-                className="text-white hover:text-indigo-700"
-                href={`/astronaut/${createNameEndpointString(astronaut.name)}`}
-              >
-                {astronaut.name}
-              </Link>
-              <h4 className="text-white">{astronaut.craft}</h4>
-            </div>
-          ))}
-        </div>
-      </div>
-    </main>
+    </>
   );
 };
 
