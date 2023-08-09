@@ -1,7 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import Logo from "./logo";
+import Logo from "../../components/logo";
+import mockRouter from "next-router-mock";
 
 describe("Logo Component", () => {
   it("renders without crashing", () => {
@@ -25,5 +26,15 @@ describe("Logo Component", () => {
     render(<Logo />);
     const logoLink = screen.queryByRole("link", { name: "AstraQuest" });
     expect(logoLink).not.toBeInTheDocument();
+  });
+
+  it.skip("navigates to the home page when the link is clicked", () => {
+    render(<Logo linkToHome={true} />);
+
+    const logoLink = screen.getByRole("link", { name: "AstraQuest" });
+
+    fireEvent.click(logoLink);
+
+    expect(mockRouter.asPath).toEqual("/home");
   });
 });
