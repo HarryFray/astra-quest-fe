@@ -5,7 +5,7 @@ import axios from "axios";
 import Link from "next/link";
 import { FaSpinner } from "react-icons/fa";
 
-const createCleanLink = (name: string) => {
+const createNameEndpointString = (name: string) => {
   return name.toLowerCase().replace(" ", "-");
 };
 
@@ -23,12 +23,14 @@ interface Astronaut {
 const AstronautsPage = () => {
   const [allAstronaut, setAllAstronaut] = useState<Astronaut[]>([]);
   const [loadingAstronaut, setLoadingAstronaut] = useState(true);
+
   const { data: session, status } = useSession();
   const router = useRouter();
 
   useEffect(() => {
     setLoadingAstronaut(true);
-    async function fetchAllAstronaut() {
+
+    async function fetchAllAstronauts() {
       try {
         const response = await axios.get("/api/astronauts");
         const data: AstronautData = response.data;
@@ -41,10 +43,11 @@ const AstronautsPage = () => {
     }
 
     if (status === "authenticated") {
-      fetchAllAstronaut();
+      fetchAllAstronauts();
     }
   }, [status]);
 
+  // TODO: UTILIZE ON ALL PROTECTED ROUTES
   // TODO: SHOULD BE ELIVATED TO A HIGHER ORDER COMPONENT
   if (status === "loading") {
     return (
@@ -60,6 +63,7 @@ const AstronautsPage = () => {
     router.push("/");
     return null;
   }
+
   if (loadingAstronaut) {
     return (
       <main className="flex justify-center items-center h-screen">
@@ -91,7 +95,7 @@ const AstronautsPage = () => {
             >
               <Link
                 className="text-white hover:text-indigo-700"
-                href={`/astronaut/${createCleanLink(astronaut.name)}`}
+                href={`/astronaut/${createNameEndpointString(astronaut.name)}`}
               >
                 {astronaut.name}
               </Link>
